@@ -1,0 +1,8 @@
+#/bin/bash
+
+for file in *.ogg; do
+    oggdec $file
+    file=$(basename $file .ogg)
+    lame -h --vbr-new -V 2 "${file}.wav" "${file}.mp3"
+    rm "${file}.wav"
+done
