@@ -68,7 +68,7 @@
     Level *level = [[[Level alloc] initWithPointsArray:__pointsArray] autorelease];
     level.totalBallsCount = 70;
     level.startBallsCount = 35;
-    level.frogPosition = CGPointMake(440, 326);
+    level.frogPosition = CGPointMake(440, 30);
     level.colorCount = 5;//BALL_COLOR_COUNT;
     
     return level;

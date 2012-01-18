@@ -12,7 +12,7 @@
 #define SH      ((CGSize)[[CCDirector sharedDirector] winSize]).height
 
 /* ball size in pixels */
-#define BS  48
+#define BS  24
 
 /* dot size (small ball on frog's neck) in pixels */
 #define DS  25
