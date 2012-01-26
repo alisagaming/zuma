@@ -22,6 +22,7 @@
     Level *level;
     int ballsCount;
     BOOL paused;
+    CGPoint beganPoint;
 }
 
 @property (nonatomic, retain) Frog *frog;

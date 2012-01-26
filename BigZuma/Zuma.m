@@ -14,6 +14,8 @@
 #import "BallCollision.h"
 #import "SimpleAudioEngine.h"
 
+const CGFloat kMinMove = 5;
+
 @interface Zuma (Private)
 -(void)pushBallsFrom:(int)startIndex step:(int)step;
 -(void)rollNewBall:(BallSpeed)speed;
@@ -71,8 +73,10 @@
     float alpha = asinf((location.y - frog.position.y) / (ccpDistance(location, frog.position)));
     if (location.x < frog.position.x)
         alpha = M_PI - alpha;
-    ball.rotation = -90-CC_RADIANS_TO_DEGREES(alpha);
-    ball.position = ccp(frog.position.x + 60*cos(alpha), frog.position.y+60*sin(alpha));
+    //ball.rotation = -90-CC_RADIANS_TO_DEGREES(alpha);
+    ball.rotation = 180;
+    //ball.position = ccp(frog.position.x + 60*cos(alpha), frog.position.y+60*sin(alpha));
+    ball.position = ccp(frog.position.x, frog.position.y+60);
     [self addChild:ball];
     @synchronized (ballsShot) {
         [ballsShot addObject:ball];
@@ -86,7 +90,9 @@
         return NO;
 	CGPoint location = [touch locationInView:[touch view]];
 	location = [[CCDirector sharedDirector] convertToGL:location];
-	[self tapDownAt:location];
+	beganPoint = location;
+    
+    //[self tapDownAt:location];
 	return YES;
 }
 
@@ -95,7 +101,17 @@
         return;
 	CGPoint location = [touch locationInView:[touch view]];
 	location = [[CCDirector sharedDirector] convertToGL:location];
-	[self tapMoveAt:location];
+	
+    CGFloat dx = fabsf(beganPoint.x - location.x);
+    CGFloat dy = fabsf(beganPoint.y - location.y);
+    
+    if( sqrtf(dx*dx+dy*dy) > kMinMove ) {
+        [frog stopAllActions];
+        location.y = 100;
+        [frog runAction: [CCMoveTo actionWithDuration:1 position:location]];
+    }
+    
+    //[self tapMoveAt:location];
 }
 
 - (void)ccTouchEnded:(UITouch *)touch withEvent:(UIEvent *)event {
@@ -103,7 +119,15 @@
         return;
 	CGPoint location = [touch locationInView:[touch view]];
 	location = [[CCDirector sharedDirector] convertToGL:location];
-	[self tapUpAt:location];
+
+    CGFloat dx = fabsf(beganPoint.x - location.x);
+    CGFloat dy = fabsf(beganPoint.y - location.y);
+    
+    if( sqrtf(dx*dx+dy*dy) < kMinMove ) {
+        [self tapUpAt:location];  
+    }
+	
+    //[self tapUpAt:location];
 }
 
 - (void)ccTouchCancelled:(UITouch *)touch withEvent:(UIEvent *)event {
@@ -136,6 +160,7 @@
         [self addChild:self.level];
         
         self.frog.position = self.level.frogPosition;
+        self.frog.rotation = 180;
         
         DirectionalPoint *dp = [self.level deathPoint];
         self.skull = [Skull skullWithPosition:dp.point andRotation:90-dp.angle];
@@ -152,19 +177,29 @@
 
 #ifndef LEVEL_CREATION_MODE
         [self schedule:@selector(startRolling) interval:0.02];
-#endif        
-        CCMenuItemSprite *restartItem = [CCMenuItemSprite itemFromNormalSprite:[CCSprite spriteWithFile:@"RestartButton.png"]
-                                                                selectedSprite:[CCSprite spriteWithFile:@"RestartButton.png"]
+#endif  
+        
+        CGSize winSize = [[CCDirector sharedDirector] winSize];
+        
+        CCSprite *bar = [CCSprite spriteWithFile: @"bar.png"];
+        bar.position = ccp(winSize.width /2.0, 32);
+        [self addChild:bar];
+        
+        CCMenuItemSprite *restartItem = [CCMenuItemSprite itemFromNormalSprite:[CCSprite spriteWithFile:@"replay-btn.png"]
+                                                                selectedSprite:[CCSprite spriteWithFile:@"replay-btn.png"]
                                                                         target:self selector:@selector(restartAction)];
-        CCMenuItemSprite *pauseItem = [CCMenuItemSprite itemFromNormalSprite:[CCSprite spriteWithFile:@"PauseButton.png"]
-                                                                selectedSprite:[CCSprite spriteWithFile:@"PauseButton.png"]
+        //restartItem.position =ccp(winSize.width /4.0, 32);
+        CCMenuItemSprite *pauseItem = [CCMenuItemSprite itemFromNormalSprite:[CCSprite spriteWithFile:@"paused-btn.png"]
+                                                                selectedSprite:[CCSprite spriteWithFile:@"paused-btn.png"]
                                                                         target:self selector:@selector(pauseAction)];
         
+        
+        //restartItem.position =ccp(winSize.width * 3 /4.0, 32);
         CCMenu *restartMenu = [CCMenu menuWithItems:restartItem, pauseItem, nil];
-        [restartMenu alignItemsVertically];
-//        restartMenu.anchorPoint = ccp(1.0, 1.0);
-        restartMenu.position = CGPointMake(SW-pauseItem.contentSize.width/2, SH-pauseItem.contentSize.height);
-//        restartMenu.position = CGPointMake(SW/2,SH/2);
+        [restartMenu alignItemsHorizontallyWithPadding:winSize.width /2.0];
+        //restartItem.position =ccp(winSize.width * 3 /4.0, 32);
+        
+        restartMenu.position = CGPointMake(winSize.width / 2.0, 32);
         [self addChild:restartMenu];
         
     }
@@ -428,7 +463,7 @@
 
     if (lastBall && lastBall.pos >= level.pathLength-1) {
         //[self unschedule:@selector(gameCycle)];
-        ball0.speed = BALL_SPEED_CRAZY;
+        ball0.speed = BALL_SPEED_VERY_CRAZY;
         frog.canShoot = NO;
         [ballsRolling removeObject:lastBall];
         [self removeChild:lastBall cleanup:YES];

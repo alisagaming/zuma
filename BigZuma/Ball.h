@@ -30,6 +30,7 @@ typedef enum {
     BALL_SPEED_NORMAL = 2,
     BALL_SPEED_FAST = 4,
     BALL_SPEED_CRAZY = 16,
+    BALL_SPEED_VERY_CRAZY = 128
 } BallSpeed;
 
 @interface Ball : CCSprite {
