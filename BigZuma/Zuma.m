@@ -14,7 +14,7 @@
 #import "BallCollision.h"
 #import "SimpleAudioEngine.h"
 
-const CGFloat kMinMove = 5;
+const CGFloat kMinMove = 10;
 
 @interface Zuma (Private)
 -(void)pushBallsFrom:(int)startIndex step:(int)step;
@@ -25,7 +25,7 @@ const CGFloat kMinMove = 5;
 -(void)gameOver;
 @end
 
-//#define LEVEL_CREATION_MODE
+#define LEVEL_CREATION_MODE
 
 @implementation Zuma
 
@@ -105,13 +105,12 @@ const CGFloat kMinMove = 5;
     CGFloat dx = fabsf(beganPoint.x - location.x);
     CGFloat dy = fabsf(beganPoint.y - location.y);
     
-    if( sqrtf(dx*dx+dy*dy) > kMinMove ) {
+    if(sqrtf(dx*dx+dy*dy) > kMinMove ) {
         [frog stopAllActions];
         location.y = 100;
-        [frog runAction: [CCMoveTo actionWithDuration:1 position:location]];
+        frog.position =location;
     }
     
-    //[self tapMoveAt:location];
 }
 
 - (void)ccTouchEnded:(UITouch *)touch withEvent:(UIEvent *)event {
@@ -127,7 +126,6 @@ const CGFloat kMinMove = 5;
         [self tapUpAt:location];  
     }
 	
-    //[self tapUpAt:location];
 }
 
 - (void)ccTouchCancelled:(UITouch *)touch withEvent:(UIEvent *)event {
@@ -160,7 +158,7 @@ const CGFloat kMinMove = 5;
         [self addChild:self.level];
         
         self.frog.position = self.level.frogPosition;
-        self.frog.rotation = 180;
+        self.frog.rotation = 0;
         
         DirectionalPoint *dp = [self.level deathPoint];
         self.skull = [Skull skullWithPosition:dp.point andRotation:90-dp.angle];
@@ -175,6 +173,8 @@ const CGFloat kMinMove = 5;
 
         [self addChild:self.frog];
 
+        canMove = YES;
+        
 #ifndef LEVEL_CREATION_MODE
         [self schedule:@selector(startRolling) interval:0.02];
 #endif  

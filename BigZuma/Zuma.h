@@ -22,6 +22,7 @@
     Level *level;
     int ballsCount;
     BOOL paused;
+    BOOL canMove;
     CGPoint beganPoint;
 }
 

@@ -26,9 +26,9 @@ CCSpriteBatchNode *__dotNode;
     if (__dotNode == nil)
         __dotNode = [[CCSpriteBatchNode batchNodeWithFile:@"dots.png"] retain];
     
-    if (self = [super initWithFile:@"Frog.png"]) {
+    if (self = [super initWithFile:@"gun.png"]) {
         self.position = pos;
-        mask = [[CCSprite alloc] initWithFile:@"Frog2.png"];
+        mask = [[CCSprite alloc] initWithFile:@"gun.png"];
         [self addChild:mask z:2];
         self.canShoot = NO;
         mask.position = ccp(self.contentSize.width / 2, self.contentSize.height / 2);
@@ -51,7 +51,7 @@ CCSpriteBatchNode *__dotNode;
         if ([self isColorPresent:(color = BALL_RAND_COLOR)])
             break;
     }
-    Ball *b = [[Ball alloc] initWithPoint:ccp(self.contentSize.width / 2, self.contentSize.height / 4) andColor:color];
+    Ball *b = [[Ball alloc] initWithPoint:ccp(self.contentSize.width / 2, self.contentSize.height * 2.0/3) andColor:color];
     b.speed = BALL_SPEED_ZERO;
     return b;
 }
@@ -67,7 +67,7 @@ CCSpriteBatchNode *__dotNode;
     if (nextBall == nil)
         return;
     nextBallDot = [CCSprite spriteWithTexture:__dotNode.texture rect:CGRectMake(0, DS*nextBall.ballColor, DS, DS)];
-    nextBallDot.position = ccp(self.contentSize.width / 2, self.contentSize.height * 3/4);
+    nextBallDot.position = ccp(self.contentSize.width / 2, self.contentSize.height/7);
     [self addChild:nextBallDot z:1];
 }
 
@@ -80,7 +80,7 @@ CCSpriteBatchNode *__dotNode;
         nextBall = tmpBall;
         [self removeChild:nextBallDot cleanup:YES];
         nextBallDot = [CCSprite spriteWithTexture:__dotNode.texture rect:CGRectMake(0, DS*nextBall.ballColor, DS, DS)];
-        nextBallDot.position = ccp(self.contentSize.width / 2, self.contentSize.height * 3/4);
+        nextBallDot.position = ccp(self.contentSize.width / 2, self.contentSize.height/7);
         [self addChild:nextBallDot z:1];
     }
 }
