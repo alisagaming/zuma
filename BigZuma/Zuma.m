@@ -14,7 +14,7 @@
 #import "BallCollision.h"
 #import "SimpleAudioEngine.h"
 
-const CGFloat kMinMove = 10;
+const CGFloat kMinMove = 30;
 
 @interface Zuma (Private)
 -(void)pushBallsFrom:(int)startIndex step:(int)step;
@@ -25,7 +25,7 @@ const CGFloat kMinMove = 10;
 -(void)gameOver;
 @end
 
-#define LEVEL_CREATION_MODE
+// #define LEVEL_CREATION_MODE
 
 @implementation Zuma
 
@@ -91,6 +91,7 @@ const CGFloat kMinMove = 10;
 	CGPoint location = [touch locationInView:[touch view]];
 	location = [[CCDirector sharedDirector] convertToGL:location];
 	beganPoint = location;
+    prevMovePoint = beganPoint;
     
     //[self tapDownAt:location];
 	return YES;
@@ -108,7 +109,14 @@ const CGFloat kMinMove = 10;
     if(sqrtf(dx*dx+dy*dy) > kMinMove ) {
         [frog stopAllActions];
         location.y = 100;
-        frog.position =location;
+        NSInteger t=location.x;
+        location.x = frog.position.x+(location.x-prevMovePoint.x);
+        prevMovePoint.x = t;
+        if(location.x <= 81)
+            location.x = 81;
+        if(location.x >= 1024-81)
+            location.x = 1024-81;
+        frog.position = location;
     }
     
 }
@@ -199,7 +207,7 @@ const CGFloat kMinMove = 10;
         [restartMenu alignItemsHorizontallyWithPadding:winSize.width /2.0];
         //restartItem.position =ccp(winSize.width * 3 /4.0, 32);
         
-        restartMenu.position = CGPointMake(winSize.width / 2.0, 32);
+        restartMenu.position = CGPointMake(winSize.width * 2/ 5.0, 32);
         [self addChild:restartMenu];
         
     }

@@ -24,6 +24,7 @@
     BOOL paused;
     BOOL canMove;
     CGPoint beganPoint;
+    CGPoint prevMovePoint;
 }
 
 @property (nonatomic, retain) Frog *frog;
