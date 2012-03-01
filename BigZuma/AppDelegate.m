@@ -12,6 +12,8 @@
 #import "GameConfig.h"
 #import "Zuma.h"
 #import "RootViewController.h"
+#import "MainMenuViewController.h"
+#import "DLMainMenu.h"
 
 @implementation AppDelegate
 
@@ -110,7 +112,8 @@
 	[self removeStartupFlicker];
 	
 	// Run the intro Scene
-	[[CCDirector sharedDirector] runWithScene: [Zuma scene]];
+    [[CCDirector sharedDirector] runWithScene: [DLMainMenu scene]];
+
 }
 
 

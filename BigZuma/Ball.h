@@ -45,4 +45,5 @@ typedef enum {
 @property (nonatomic, assign) BallColor ballColor;
 -(id)initWithPoint:(CGPoint)point andColor:(BallColor)color;
 
+
 @end

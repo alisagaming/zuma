@@ -11,8 +11,12 @@
 #import "Frog.h"
 #import "Level.h"
 #import "Skull.h"
+#import "DLGameMenu.h"
+#import "DLGameOverMenu.h"
+#import "Definitions.h"
+//#import "AdWhirlView.h"
 
-@interface Zuma : CCLayer {
+@interface Zuma : CCLayer <DLGameMenuProtocol, DLGameOverMenuProtocol/*, AdWhirlDelegate*/> {
     NSMutableArray *ballsRolling;
     NSMutableArray *ballsShot;
     NSMutableArray *ballsCollisions;
@@ -21,16 +25,24 @@
     Frog *frog;
     Level *level;
     int ballsCount;
+    int score;
     BOOL paused;
     BOOL canMove;
     CGPoint beganPoint;
     CGPoint prevMovePoint;
+    DLGameMenu *menuLayer;
+    DLGameOverMenu *overMenuLayer;
+    //AdWhirlView *bannerView;
+
 }
 
 @property (nonatomic, retain) Frog *frog;
 @property (nonatomic, retain) Level *level;
 @property (nonatomic, retain) Skull *skull;
+@property (nonatomic, retain) DLGameMenu *menuLayer;
+@property (nonatomic, retain) DLGameOverMenu *overMenuLayer;
+@property (nonatomic, retain) CCLabelTTF *scoreLabel;
 
-+(CCScene *)scene;
++(CCScene *)sceneForLevel:(int)levelNumber;
 
 @end

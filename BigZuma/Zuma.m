@@ -8,11 +8,14 @@
 
 #import "Zuma.h"
 #import "Ball.h"
-#import "Definitions.h"
 #import "Level.h"
 #import "Bezier.h"
 #import "BallCollision.h"
 #import "SimpleAudioEngine.h"
+#import "DLGameMenu.h"
+#import "DLGameOverMenu.h"
+#import "DLMainMenu.h"
+#import "CCUIViewWrapper.h"
 
 const CGFloat kMinMove = 30;
 
@@ -31,7 +34,7 @@ const CGFloat kMinMove = 30;
 
 @synthesize frog;
 @synthesize level;
-@synthesize skull;
+@synthesize skull, menuLayer, overMenuLayer, scoreLabel;
 
 - (void)tapDownAt:(CGPoint)location {
 #ifdef LEVEL_CREATION_MODE
@@ -143,26 +146,29 @@ const CGFloat kMinMove = 30;
 }
 
 
-+(CCScene *)scene {
-	CCScene *scene = [CCScene node];
-	
-	Zuma *zuma = [[[Zuma alloc] init] autorelease];
-	
-	[scene addChild: zuma];
-	
-	return scene;
-    
-}
 
-- (id) init {
+
+////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+- (id) initForLevel:(int)levelNumber {
  
 
     if (self = [super init]) {
+        
         self.isTouchEnabled = YES;
         [[CCTouchDispatcher sharedDispatcher] addTargetedDelegate:self priority:0 swallowsTouches:YES];
         self.frog = [Frog frog];
         
-        self.level = [Level level1];
+        if(levelNumber == 1)
+            self.level = [Level level1];
+        else if(levelNumber == 2)
+            self.level = [Level level2];
+        else if(levelNumber == 3)
+            self.level = [Level level3];
+        
         [self addChild:self.level];
         
         self.frog.position = self.level.frogPosition;
@@ -192,41 +198,91 @@ const CGFloat kMinMove = 30;
         CCSprite *bar = [CCSprite spriteWithFile: @"bar.png"];
         bar.position = ccp(winSize.width /2.0, 32);
         [self addChild:bar];
+
+        CCSprite *scoreField = [CCSprite spriteWithFile: @"score_field.png"];
+        scoreField.position = ccp(870, 32);
+        [self addChild:scoreField];
+        
+        scoreLabel = [[CCLabelTTF alloc] initWithString:@"" fontName:@"kablam!_" fontSize:30.0];
+        scoreLabel.position = ccp(870, 32);
+        scoreLabel.color = ccc3(0, 0, 0);
+        [self addChild:scoreLabel];
+        
+        [scoreLabel setString:[NSString stringWithFormat:@"%d", score]];
         
         CCMenuItemSprite *restartItem = [CCMenuItemSprite itemFromNormalSprite:[CCSprite spriteWithFile:@"replay-btn.png"]
                                                                 selectedSprite:[CCSprite spriteWithFile:@"replay-btn.png"]
                                                                         target:self selector:@selector(restartAction)];
-        //restartItem.position =ccp(winSize.width /4.0, 32);
         CCMenuItemSprite *pauseItem = [CCMenuItemSprite itemFromNormalSprite:[CCSprite spriteWithFile:@"paused-btn.png"]
                                                                 selectedSprite:[CCSprite spriteWithFile:@"paused-btn.png"]
                                                                         target:self selector:@selector(pauseAction)];
         
-        
-        //restartItem.position =ccp(winSize.width * 3 /4.0, 32);
         CCMenu *restartMenu = [CCMenu menuWithItems:restartItem, pauseItem, nil];
         [restartMenu alignItemsHorizontallyWithPadding:winSize.width /2.0];
-        //restartItem.position =ccp(winSize.width * 3 /4.0, 32);
         
-        restartMenu.position = CGPointMake(winSize.width * 2/ 5.0, 32);
+        restartMenu.position = CGPointMake(370, 32);
         [self addChild:restartMenu];
         
+        /*bannerView = [AdWhirlView requestAdWhirlViewWithDelegate:self];
+        CCUIViewWrapper *wrapper = [CCUIViewWrapper wrapperForUIView:bannerView];
+        wrapper.position = CGPointMake(0, winSize.height);
+        [self addChild:wrapper];
+        */
     }
     return  self;
 }
 
 
++(CCScene *)sceneForLevel:(int)levelNumber {
+	CCScene *scene = [CCScene node];
+	
+	Zuma *zuma = [[[Zuma alloc] initForLevel:levelNumber] autorelease];
+	
+	[scene addChild: zuma];
+	
+    [[CCDirector sharedDirector] resume];
+    
+	return scene;
+    
+}
+
 -(void)restartAction {
-    [[CCDirector sharedDirector] replaceScene:[Zuma scene]];
+    [self removeAllChildrenWithCleanup:YES];
+    [[CCDirector sharedDirector] resume];
+    [[CCDirector sharedDirector] replaceScene:[Zuma sceneForLevel:[level levelNumber]]];
 }
 
 
 -(void)pauseAction {
+    
     paused = !paused;
-    if (paused)
+    if (paused) {
         [[CCDirector sharedDirector] pause];
-    else
+        
+        self.menuLayer = [[[DLGameMenu alloc] init] autorelease];
+        self.menuLayer.delegate =self;
+        
+        [self addChild:menuLayer z:20];
+    }
+    else {
+        if (self.menuLayer)
+            [self removeChild:self.menuLayer cleanup:YES];
         [[CCDirector sharedDirector] resume];
+    }
 }
+
+-(void)goMainMenuAction {
+    
+    [[CCDirector sharedDirector] replaceScene:[DLMainMenu scene]];
+    
+}
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
 
 -(void)startRolling {
     
@@ -384,8 +440,17 @@ const CGFloat kMinMove = 30;
     }
     if (sameColorBalls.count >= 3) {
         for (Ball *ball in sameColorBalls) {
+            
+            CGPoint bp = ccp(ball.position.x, ball.position.y);
+            CCLabelTTF *flyScore = [[CCLabelTTF alloc] initWithString:@"100" fontName:@"kablam!_" fontSize:20.0];
+            flyScore.position = ccp(bp.x, bp.y);
+            flyScore.color = ccc3(0, 0, 0);
+            [self addChild:flyScore];
+            [flyScore runAction: [CCMoveTo actionWithDuration:2 position:ccp(1500, -200)]];
+            
             [ballsRolling removeObject:ball];
             [self removeChild:ball cleanup:NO];
+            score+=100;
         }
         if (smallestNotMatchedIndex != -1 && smallestNotMatchedIndex < ballsRolling.count-1) {
             Ball *ball0 = [ballsRolling objectAtIndex:smallestNotMatchedIndex];
@@ -463,6 +528,8 @@ const CGFloat kMinMove = 30;
         [self checkForCollisions];
     }
     
+    [scoreLabel setString:[NSString stringWithFormat:@" %d ", score]];
+    
     [self handleBallCollisions];
     
     [self handleBackwardBalls];
@@ -470,12 +537,12 @@ const CGFloat kMinMove = 30;
     Ball *lastBall = [ballsRolling lastObject];
 
     if (lastBall && lastBall.pos >= level.pathLength-1) {
-        //[self unschedule:@selector(gameCycle)];
+        [self unschedule:@selector(gameCycle)];
         ball0.speed = BALL_SPEED_VERY_CRAZY;
         frog.canShoot = NO;
         [ballsRolling removeObject:lastBall];
         [self removeChild:lastBall cleanup:YES];
-        //[self schedule:@selector(gameOver)];
+        [self gameOver];
     }
     
     [self.frog update];
@@ -518,6 +585,14 @@ const CGFloat kMinMove = 30;
 }
 
 -(void)gameOver {
+    
+    [[CCDirector sharedDirector] pause];
+    
+    self.overMenuLayer = [[[DLGameOverMenu alloc] initWithScore:score] autorelease];
+    self.overMenuLayer.delegate = self;
+    
+    [self addChild:overMenuLayer z:20];
+    
 }
 
 - (void)dealloc {

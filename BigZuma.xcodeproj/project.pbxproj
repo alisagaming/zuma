@@ -154,13 +154,24 @@
 		7BB164AD145B33E300631711 /* BallBlue.png in Resources */ = {isa = PBXBuildFile; fileRef = 7BB164AC145B33E300631711 /* BallBlue.png */; };
 		7BB164B3145C59F500631711 /* Level.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BB164B2145C59F500631711 /* Level.m */; };
 		7BB164B6145C606400631711 /* Bezier.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BB164B5145C606300631711 /* Bezier.m */; };
+		B82C9BF614ED28B7009A8E64 /* MainMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B82C9BF414ED28B7009A8E64 /* MainMenuViewController.m */; };
+		B82C9BF714ED28B7009A8E64 /* MainMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B82C9BF514ED28B7009A8E64 /* MainMenuViewController.xib */; };
+		B82C9BF914ED2C01009A8E64 /* veena-malik-wallpaper-02-10x7.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B82C9BF814ED2C01009A8E64 /* veena-malik-wallpaper-02-10x7.jpg */; };
+		B83A043114EBBB6C00264D65 /* n891_512x384.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B83A043014EBBB6C00264D65 /* n891_512x384.jpg */; };
 		B8A00BF114D2BD4400B44806 /* gun.png in Resources */ = {isa = PBXBuildFile; fileRef = B8A00BF014D2BD4400B44806 /* gun.png */; };
 		B8A00BF414D2DB6C00B44806 /* blue-greed-ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = B8A00BF314D2DB6C00B44806 /* blue-greed-ipad.png */; };
+		B8B4EC5114EA85C900E4AC9A /* DLGameMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = B8B4EC5014EA85C900E4AC9A /* DLGameMenu.m */; };
+		F278AD3214F69308005F3E79 /* DLMainMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = F278AD3114F69308005F3E79 /* DLMainMenu.m */; };
+		F278AD3614F6958E005F3E79 /* CCUIViewWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = F278AD3514F6958E005F3E79 /* CCUIViewWrapper.m */; };
+		F27EEE6F14F4348E00E39043 /* kablam!_.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F27EEE6E14F4348E00E39043 /* kablam!_.ttf */; };
 		F27FC75114D1DD29003EF6EA /* bar.png in Resources */ = {isa = PBXBuildFile; fileRef = F27FC74C14D1DD29003EF6EA /* bar.png */; };
 		F27FC75214D1DD29003EF6EA /* menu-btn.png in Resources */ = {isa = PBXBuildFile; fileRef = F27FC74D14D1DD29003EF6EA /* menu-btn.png */; };
 		F27FC75314D1DD29003EF6EA /* paused-btn.png in Resources */ = {isa = PBXBuildFile; fileRef = F27FC74E14D1DD29003EF6EA /* paused-btn.png */; };
 		F27FC75414D1DD29003EF6EA /* replay-btn.png in Resources */ = {isa = PBXBuildFile; fileRef = F27FC74F14D1DD29003EF6EA /* replay-btn.png */; };
 		F27FC75514D1DD29003EF6EA /* score_field.png in Resources */ = {isa = PBXBuildFile; fileRef = F27FC75014D1DD29003EF6EA /* score_field.png */; };
+		F283AFCF14FD24A300478135 /* DLGameOverMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = F283AFCE14FD24A300478135 /* DLGameOverMenu.m */; };
+		F283AFD714FD3D2E00478135 /* Beautiful-girls-322.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F283AFD614FD3D2E00478135 /* Beautiful-girls-322.jpg */; };
+		F283AFD914FD40E100478135 /* 1024_Naked girl.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F283AFD814FD40E100478135 /* 1024_Naked girl.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -439,13 +450,29 @@
 		7BB164B2145C59F500631711 /* Level.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Level.m; sourceTree = "<group>"; };
 		7BB164B4145C606300631711 /* Bezier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bezier.h; sourceTree = "<group>"; };
 		7BB164B5145C606300631711 /* Bezier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Bezier.m; sourceTree = "<group>"; };
+		B82C9BF314ED28B7009A8E64 /* MainMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainMenuViewController.h; sourceTree = "<group>"; };
+		B82C9BF414ED28B7009A8E64 /* MainMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainMenuViewController.m; sourceTree = "<group>"; };
+		B82C9BF514ED28B7009A8E64 /* MainMenuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenuViewController.xib; sourceTree = "<group>"; };
+		B82C9BF814ED2C01009A8E64 /* veena-malik-wallpaper-02-10x7.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "veena-malik-wallpaper-02-10x7.jpg"; sourceTree = "<group>"; };
+		B83A043014EBBB6C00264D65 /* n891_512x384.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = n891_512x384.jpg; sourceTree = "<group>"; };
 		B8A00BF014D2BD4400B44806 /* gun.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gun.png; sourceTree = "<group>"; };
 		B8A00BF314D2DB6C00B44806 /* blue-greed-ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blue-greed-ipad.png"; sourceTree = "<group>"; };
+		B8B4EC4F14EA85C900E4AC9A /* DLGameMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLGameMenu.h; sourceTree = "<group>"; };
+		B8B4EC5014EA85C900E4AC9A /* DLGameMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLGameMenu.m; sourceTree = "<group>"; };
+		F278AD3014F69308005F3E79 /* DLMainMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLMainMenu.h; sourceTree = "<group>"; };
+		F278AD3114F69308005F3E79 /* DLMainMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLMainMenu.m; sourceTree = "<group>"; };
+		F278AD3414F6958E005F3E79 /* CCUIViewWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCUIViewWrapper.h; sourceTree = "<group>"; };
+		F278AD3514F6958E005F3E79 /* CCUIViewWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCUIViewWrapper.m; sourceTree = "<group>"; };
+		F27EEE6E14F4348E00E39043 /* kablam!_.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "kablam!_.ttf"; sourceTree = "<group>"; };
 		F27FC74C14D1DD29003EF6EA /* bar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bar.png; sourceTree = "<group>"; };
 		F27FC74D14D1DD29003EF6EA /* menu-btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-btn.png"; sourceTree = "<group>"; };
 		F27FC74E14D1DD29003EF6EA /* paused-btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "paused-btn.png"; sourceTree = "<group>"; };
 		F27FC74F14D1DD29003EF6EA /* replay-btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "replay-btn.png"; sourceTree = "<group>"; };
 		F27FC75014D1DD29003EF6EA /* score_field.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = score_field.png; sourceTree = "<group>"; };
+		F283AFCD14FD24A300478135 /* DLGameOverMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLGameOverMenu.h; sourceTree = "<group>"; };
+		F283AFCE14FD24A300478135 /* DLGameOverMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLGameOverMenu.m; sourceTree = "<group>"; };
+		F283AFD614FD3D2E00478135 /* Beautiful-girls-322.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Beautiful-girls-322.jpg"; sourceTree = "<group>"; };
+		F283AFD814FD40E100478135 /* 1024_Naked girl.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "1024_Naked girl.jpg"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -503,6 +530,7 @@
 			isa = PBXGroup;
 			children = (
 				7BB1648F145B190A00631711 /* Definitions.h */,
+				7BB16482145B148700631711 /* GameConfig.h */,
 				7BB16479145B148600631711 /* AppDelegate.h */,
 				7BB1647A145B148600631711 /* AppDelegate.m */,
 				7BB1647C145B148700631711 /* RootViewController.h */,
@@ -523,7 +551,15 @@
 				7BB164B2145C59F500631711 /* Level.m */,
 				7BB16490145B19F600631711 /* Zuma.h */,
 				7BB16491145B19F600631711 /* Zuma.m */,
-				7BB16482145B148700631711 /* GameConfig.h */,
+				B8B4EC4F14EA85C900E4AC9A /* DLGameMenu.h */,
+				B8B4EC5014EA85C900E4AC9A /* DLGameMenu.m */,
+				F283AFCD14FD24A300478135 /* DLGameOverMenu.h */,
+				F283AFCE14FD24A300478135 /* DLGameOverMenu.m */,
+				F278AD3014F69308005F3E79 /* DLMainMenu.h */,
+				F278AD3114F69308005F3E79 /* DLMainMenu.m */,
+				B82C9BF314ED28B7009A8E64 /* MainMenuViewController.h */,
+				B82C9BF414ED28B7009A8E64 /* MainMenuViewController.m */,
+				B82C9BF514ED28B7009A8E64 /* MainMenuViewController.xib */,
 				7BB16328145B148200631711 /* Resources */,
 				7BB1633C145B148200631711 /* libs */,
 				7BB16475145B148600631711 /* Supporting Files */,
@@ -534,6 +570,11 @@
 		7BB16328145B148200631711 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				F283AFD814FD40E100478135 /* 1024_Naked girl.jpg */,
+				F283AFD614FD3D2E00478135 /* Beautiful-girls-322.jpg */,
+				F27EEE6E14F4348E00E39043 /* kablam!_.ttf */,
+				B82C9BF814ED2C01009A8E64 /* veena-malik-wallpaper-02-10x7.jpg */,
+				B83A043014EBBB6C00264D65 /* n891_512x384.jpg */,
 				B8A00BF314D2DB6C00B44806 /* blue-greed-ipad.png */,
 				B8A00BF014D2BD4400B44806 /* gun.png */,
 				F27FC74C14D1DD29003EF6EA /* bar.png */,
@@ -583,6 +624,8 @@
 		7BB1633C145B148200631711 /* libs */ = {
 			isa = PBXGroup;
 			children = (
+				F278AD3414F6958E005F3E79 /* CCUIViewWrapper.h */,
+				F278AD3514F6958E005F3E79 /* CCUIViewWrapper.m */,
 				7BB16432145B148600631711 /* LICENSE_cocos2d.txt */,
 				7BB16441145B148600631711 /* LICENSE_CocosDenshion.txt */,
 				7BB1644C145B148600631711 /* LICENSE_TouchJSON.txt */,
@@ -982,6 +1025,12 @@
 				F27FC75514D1DD29003EF6EA /* score_field.png in Resources */,
 				B8A00BF114D2BD4400B44806 /* gun.png in Resources */,
 				B8A00BF414D2DB6C00B44806 /* blue-greed-ipad.png in Resources */,
+				B83A043114EBBB6C00264D65 /* n891_512x384.jpg in Resources */,
+				B82C9BF714ED28B7009A8E64 /* MainMenuViewController.xib in Resources */,
+				B82C9BF914ED2C01009A8E64 /* veena-malik-wallpaper-02-10x7.jpg in Resources */,
+				F27EEE6F14F4348E00E39043 /* kablam!_.ttf in Resources */,
+				F283AFD714FD3D2E00478135 /* Beautiful-girls-322.jpg in Resources */,
+				F283AFD914FD40E100478135 /* 1024_Naked girl.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1097,6 +1146,11 @@
 				7B82CD03145DC26B00F093C6 /* DirectionalPoint.m in Sources */,
 				7B82CD06145EB35E00F093C6 /* BallCollision.m in Sources */,
 				7B650F031462F56300C36C91 /* Skull.m in Sources */,
+				B8B4EC5114EA85C900E4AC9A /* DLGameMenu.m in Sources */,
+				B82C9BF614ED28B7009A8E64 /* MainMenuViewController.m in Sources */,
+				F278AD3214F69308005F3E79 /* DLMainMenu.m in Sources */,
+				F278AD3614F6958E005F3E79 /* CCUIViewWrapper.m in Sources */,
+				F283AFCF14FD24A300478135 /* DLGameOverMenu.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1143,15 +1197,31 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer: MICHAEL ELISEEV (BLNN7678UG)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: MICHAEL ELISEEV (BLNN7678UG)";
 				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/BigZuma/meliseev-bb2-a618575d977f50c9f0887eea07d70c54bf4ab106/Snappers/libs\"",
+				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = BigZuma/Prefix.pch;
 				"GCC_THUMB_SUPPORT[arch=armv6]" = "";
 				INFOPLIST_FILE = BigZuma/Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/BigZuma/meliseev-bb2-a618575d977f50c9f0887eea07d70c54bf4ab106/Snappers/libs/adwhirl/GoogleAdMobAdsSDK\"",
+					"\"$(SRCROOT)/BigZuma/meliseev-bb2-a618575d977f50c9f0887eea07d70c54bf4ab106/Snappers/libs/flurry\"",
+					"\"$(SRCROOT)/BigZuma/meliseev-bb2-a618575d977f50c9f0887eea07d70c54bf4ab106/Snappers/libs/Kiip-v1.0.13/iphoneos\"",
+					"\"$(SRCROOT)/BigZuma/meliseev-bb2-a618575d977f50c9f0887eea07d70c54bf4ab106/Snappers/libs/Kiip-v1.0.13/iphonesimulator\"",
+					"\"$(SRCROOT)/BigZuma/meliseev-bb2-a618575d977f50c9f0887eea07d70c54bf4ab106/Snappers/libs/Kiip-v1.0.13/universal\"",
+				);
 				OTHER_LDFLAGS = "-lz";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "57254836-1F70-4A99-BF6A-F020228E3057";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "57254836-1F70-4A99-BF6A-F020228E3057";
 				TARGETED_DEVICE_FAMILY = 2;
 				WRAPPER_EXTENSION = app;
 			};
@@ -1161,14 +1231,30 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer: MICHAEL ELISEEV (BLNN7678UG)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: MICHAEL ELISEEV (BLNN7678UG)";
 				COPY_PHASE_STRIP = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/BigZuma/meliseev-bb2-a618575d977f50c9f0887eea07d70c54bf4ab106/Snappers/libs\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = BigZuma/Prefix.pch;
 				"GCC_THUMB_SUPPORT[arch=armv6]" = "";
 				INFOPLIST_FILE = BigZuma/Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/BigZuma/meliseev-bb2-a618575d977f50c9f0887eea07d70c54bf4ab106/Snappers/libs/adwhirl/GoogleAdMobAdsSDK\"",
+					"\"$(SRCROOT)/BigZuma/meliseev-bb2-a618575d977f50c9f0887eea07d70c54bf4ab106/Snappers/libs/flurry\"",
+					"\"$(SRCROOT)/BigZuma/meliseev-bb2-a618575d977f50c9f0887eea07d70c54bf4ab106/Snappers/libs/Kiip-v1.0.13/iphoneos\"",
+					"\"$(SRCROOT)/BigZuma/meliseev-bb2-a618575d977f50c9f0887eea07d70c54bf4ab106/Snappers/libs/Kiip-v1.0.13/iphonesimulator\"",
+					"\"$(SRCROOT)/BigZuma/meliseev-bb2-a618575d977f50c9f0887eea07d70c54bf4ab106/Snappers/libs/Kiip-v1.0.13/universal\"",
+				);
 				OTHER_LDFLAGS = "-lz";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "57254836-1F70-4A99-BF6A-F020228E3057";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "57254836-1F70-4A99-BF6A-F020228E3057";
 				TARGETED_DEVICE_FAMILY = 2;
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
