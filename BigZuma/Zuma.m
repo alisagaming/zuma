@@ -15,6 +15,7 @@
 #import "DLGameMenu.h"
 #import "DLGameOverMenu.h"
 #import "DLMainMenu.h"
+#import "AdWhirlView.h"
 #import "CCUIViewWrapper.h"
 
 const CGFloat kMinMove = 30;
@@ -223,13 +224,40 @@ const CGFloat kMinMove = 30;
         restartMenu.position = CGPointMake(370, 32);
         [self addChild:restartMenu];
         
-        /*bannerView = [AdWhirlView requestAdWhirlViewWithDelegate:self];
+        bannerView = [AdWhirlView requestAdWhirlViewWithDelegate:self];
+        //[[[CCDirector sharedDirector] openGLView] addSubview:bannerView];
         CCUIViewWrapper *wrapper = [CCUIViewWrapper wrapperForUIView:bannerView];
         wrapper.position = CGPointMake(0, winSize.height);
-        [self addChild:wrapper];
-        */
+        [self addChild:wrapper z:100];
+        
     }
     return  self;
+}
+
+- (void)adWhirlDidReceiveAd:(AdWhirlView *)adView {
+	
+    // adjust frame
+	CGRect frame = bannerView.frame;
+	frame.origin.x = 210;
+	frame.origin.y = 710;
+	bannerView.frame = frame;
+	
+    NSLog(@"\n!!!\n\n");
+    
+	// fade in
+	bannerView.alpha = 0.0f;
+	[UIView beginAnimations:@"adWhirlDidReceiveAd" context:nil];
+	bannerView.alpha = 1.0f;
+	[UIView commitAnimations];
+}
+
+
+- (NSString *)adWhirlApplicationKey {
+	return @"9e7eeb4e4b8842feb0402688635de4c8";
+}
+
+- (UIViewController *)viewControllerForPresentingModalView {
+    return [[[UIApplication sharedApplication] keyWindow] rootViewController];
 }
 
 

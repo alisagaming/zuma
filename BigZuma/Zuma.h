@@ -14,9 +14,9 @@
 #import "DLGameMenu.h"
 #import "DLGameOverMenu.h"
 #import "Definitions.h"
-//#import "AdWhirlView.h"
+#import "AdWhirlView.h"
 
-@interface Zuma : CCLayer <DLGameMenuProtocol, DLGameOverMenuProtocol/*, AdWhirlDelegate*/> {
+@interface Zuma : CCLayer <DLGameMenuProtocol, DLGameOverMenuProtocol, AdWhirlDelegate> {
     NSMutableArray *ballsRolling;
     NSMutableArray *ballsShot;
     NSMutableArray *ballsCollisions;
@@ -32,7 +32,7 @@
     CGPoint prevMovePoint;
     DLGameMenu *menuLayer;
     DLGameOverMenu *overMenuLayer;
-    //AdWhirlView *bannerView;
+    AdWhirlView *bannerView;
 
 }
 
